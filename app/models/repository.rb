@@ -10,6 +10,7 @@ class Repository < ApplicationRecord
   has_many_attached :repodata_files
 
   validates :url, presence: true
+  validates :url, uniqueness: { scope: :distribution }
 
   def sync
     if updateinfo?
